@@ -31,7 +31,8 @@ int iIn;
 char rxbuf[512];
 
 Host2DevCmd	cmd;
-InputsData	inputs;
+//InputsData	inputs;
+extern volatile InputsData inputs_data;
 
 int main(void)
 {
@@ -102,6 +103,9 @@ int main(void)
     //n = read(fd, &inputs, sizeof(inputs));
     printf("trace report: %d %d\n", sizeof(Host2DevCmd), sizeof(CmdType));
 	printf("send %d bytes\n receive %d bytes\n", iIn, n);
+	while(1){
+		processGUI();
+	}
 	return EXIT_SUCCESS;
 
 
